@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Psychological Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* Add specific styles for profile page layout if needed */
+        .profile-content {
+            max-width: 700px;
+            margin: 5rem auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(94, 114, 228, 0.1);
+            text-align: center;
+        }
+        .profile-picture-container {
+            margin-bottom: 2rem;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .profile-content h2 {
+             margin-bottom: 2rem;
+             color: #2d3748;
+             font-size: 2rem;
+        }
+         /* Adjust icon position for select */
+        .form-group select + .icon {
+             top: 40px; /* Align with input icons */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+             <svg class="logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z" fill="white" fill-opacity="0.2"/>
+                <path d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z" fill="white"/>
+                <path d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z" fill="white"/>
+                <path d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z" fill="white"/>
+            </svg>
+            <h1>Psychological Support</h1>
+        </div>
+        <nav>
+            <a href="menu.html" class="button secondary-button">
+                <i class="fas fa-arrow-left"></i> Back to Menu
+            </a>
+            <!-- Add logout button later when auth is implemented -->
+        </nav>
+    </header>
+
+    <div class="profile-content fade-in-up">
+        <h2>My Profile</h2>
+
+        <div class="profile-picture-container">
+            <!-- Suggestion: Replace with actual profile picture -->
+            <img src="images/profile-placeholder.png" alt="Profile Picture" class="profile-picture">
+             <p style="font-size: 0.8rem; color: #a0aec0; margin-top: 0.5rem;">(Replace: images/profile-placeholder.png)</p>
+            <!-- Add upload button/link here later -->
+        </div>
+
+        <!-- Form action needs to point to a backend endpoint eventually -->
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                 <i class="fas fa-user icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                 <i class="fas fa-envelope icon"></i>
+            </div>
+
+             <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+                 <i class="fas fa-calendar-alt icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                 <i class="fas fa-birthday-cake icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="profession">Profession</label>
+                <input type="text" id="profession" name="profession" placeholder="Enter your profession">
+                 <i class="fas fa-briefcase icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="marital-status">Marital Status</label>
+                <select id="marital-status" name="marital-status" style="padding: 1rem; width: 100%; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; background-color: white; appearance: none;">
+                    <option value="" disabled selected>Select status...</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                    <option value="other">Other</option>
+                </select>
+                 <i class="fas fa-heart icon" style="pointer-events: none;"></i> <!-- Icon for visual cue -->
+            </div>
+
+            <button type="submit" class="submit-btn" style="margin-top: 1.5rem;">
+                <i class="fas fa-save"></i> Save Profile
+            </button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="copyright">
+            &copy; 2025 Psychological Support. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Psychological Support</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-container">
+        <svg
+          class="logo"
+          viewBox="0 0 36 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z"
+            fill="white"
+            fill-opacity="0.2"
+          />
+          <path
+            d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z"
+            fill="white"
+          />
+          <path
+            d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z"
+            fill="white"
+          />
+          <path
+            d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z"
+            fill="white"
+          />
+        </svg>
+        <h1>Psychological Support</h1>
+      </div>
+      <nav>
+        <a href="index.html" class="button secondary-button">
+          <i class="fas fa-home"></i> Home
+        </a>
+        <a href="about.html" class="button secondary-button">
+          <i class="fas fa-info-circle"></i> About Us
+        </a>
+      </nav>
+    </header>
+
+    <div class="shapes-container">
+      <div class="shape shape1"></div>
+      <div class="shape shape2"></div>
+      <div class="shape shape3"></div>
+    </div>
+
+    <div class="login-container fade-in-up">
+      <h2>Welcome Back</h2>
+
+      <form action="menu.html" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
+          <i class="fas fa-user icon"></i>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+          <i class="fas fa-lock icon"></i>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Remember me for 30 days</label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+
+        <p class="sign-up-link">
+          Don't have an account? <a href="registration.html">Register here</a>
+        </p>
+        <p>
+          <a
+            href="#"
+            style="color: #5e72e4; text-decoration: none; font-size: 0.9rem"
+            >Forgot password?</a
+          >
+        </p>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div class="copyright">
+        &copy; 2025 Psychological Support. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Visual feedback for form inputs
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => {
+        input.addEventListener("focus", function () {
+          this.parentElement.style.borderColor = "#5e72e4";
+        });
+        input.addEventListener("blur", function () {
+          this.parentElement.style.borderColor = "";
+        });
+      });
+
+      // Password visibility toggle
+      const togglePassword = document.querySelector(".fa-lock");
+      const password = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", function () {
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("fa-lock");
+        this.classList.toggle("fa-lock-open");
+      });
+    </script>
+    <script src="auth.js"></script>
+    <script>
+      setupLoginForm();
+    </script>
+  </body>
+</html>

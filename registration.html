@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Psychological Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z" fill="white" fill-opacity="0.2"/>
+                <path d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z" fill="white"/>
+                <path d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z" fill="white"/>
+                <path d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z" fill="white"/>
+            </svg>
+            <h1>Psychological Support</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="button secondary-button">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="login.html" class="button secondary-button">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </nav>
+    </header>
+
+    <div class="shapes-container">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+    </div>
+
+    <!-- Use login-container class as styles are merged -->
+    <div class="login-container fade-in-up">
+        <h2>Create an Account</h2>
+        <!-- Form action needs to point to a backend endpoint eventually -->
+        <form id="registrationForm" action="#" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                <i class="fas fa-user icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label> <!-- Added Email Field -->
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <i class="fas fa-envelope icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+                <i class="fas fa-lock icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                <i class="fas fa-lock icon"></i>
+            </div>
+            <div id="password-error" style="color: red; font-size: 0.9rem; margin-bottom: 1rem; text-align: left; display: none;">Passwords do not match.</div>
+
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+
+            <p class="sign-up-link" style="margin-top: 1.5rem;">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="copyright">
+            &copy; 2025 Psychological Support. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic password match validation
+        const registrationForm = document.getElementById('registrationForm');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const passwordError = document.getElementById('password-error');
+
+        registrationForm.addEventListener('submit', function(event) {
+            if (password.value !== confirmPassword.value) {
+                event.preventDefault(); // Prevent form submission
+                passwordError.style.display = 'block';
+                confirmPassword.style.borderColor = 'red';
+                confirmPassword.focus();
+            } else {
+                passwordError.style.display = 'none';
+                confirmPassword.style.borderColor = ''; // Reset border color
+                // Add actual form submission logic to backend here
+                console.log('Form would be submitted here');
+                // For now, prevent default to avoid navigating away
+                event.preventDefault();
+                alert('Registration placeholder: Form is valid but not submitted to a backend.');
+            }
+        });
+
+        // Clear error when user types in confirm password field
+        confirmPassword.addEventListener('input', function() {
+            if (passwordError.style.display === 'block') {
+                passwordError.style.display = 'none';
+                confirmPassword.style.borderColor = '';
+            }
+        });
+    </script>
+
+<script src="auth.js"></script>
+<script>
+  setupRegistrationForm();
+</script>
+
+</body>
+</html>

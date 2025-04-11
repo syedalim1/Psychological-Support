@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wellness Journal - Psychological Support</title>
+<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="logo-container">
+    <svg class="logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z" fill="white" fill-opacity="0.2"/>
+      <path d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z" fill="white"/>
+      <path d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z" fill="white"/>
+      <path d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z" fill="white"/>
+    </svg>
+    <h1>Psychological Support</h1>
+  </div>
+  <nav>
+    <a href="menu.html" class="button secondary-button"><i class="fas fa-arrow-left"></i> Back to Menu</a>
+    <a href="profile.html" class="button primary-button"><i class="fas fa-user"></i> My Profile</a>
+  </nav>
+</header>
+
+<div class="main-content fade-in-up">
+  <h2 class="section-title">Wellness Journal</h2>
+  <p class="section-subtitle">Track your thoughts, feelings, and progress.</p>
+
+  <div class="quote">
+    "Journaling is like whispering to oneself and listening at the same time."
+  </div>
+
+  <div style="background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-top: 2rem;">
+    <h3 style="margin-bottom: 1rem;">New Entry</h3>
+    <textarea id="journalEntry" rows="5" placeholder="Write your thoughts here..." style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;"></textarea>
+    <br/>
+    <label for="mood">Mood:</label>
+    <select id="mood" style="margin-left: 0.5rem; padding: 0.5rem; border-radius: 8px;">
+      <option>😊 Happy</option>
+      <option>😐 Neutral</option>
+      <option>😔 Sad</option>
+      <option>😠 Angry</option>
+      <option>😰 Anxious</option>
+    </select>
+    <br/><br/>
+    <button class="submit-btn" onclick="saveEntry()"><i class="fas fa-save"></i> Save Entry</button>
+  </div>
+
+  <h3 style="margin-top: 3rem;">Previous Entries</h3>
+  <div id="entries" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;"></div>
+</div>
+
+<footer class="footer">
+  <div class="copyright">
+    &copy; 2025 Psychological Support. All rights reserved.
+  </div>
+</footer>
+
+<script>
+function saveEntry() {
+  const text = document.getElementById('journalEntry').value.trim();
+  const mood = document.getElementById('mood').value;
+  if (!text) {
+    alert('Please write something in your journal entry.');
+    return;
+  }
+  const entry = { text, mood, date: new Date().toLocaleString() };
+  const entries = JSON.parse(localStorage.getItem('journalEntries') || '[]');
+  entries.unshift(entry);
+  localStorage.setItem('journalEntries', JSON.stringify(entries));
+  document.getElementById('journalEntry').value = '';
+  displayEntries();
+}
+
+function displayEntries() {
+  const entries = JSON.parse(localStorage.getItem('journalEntries') || '[]');
+  const container = document.getElementById('entries');
+  container.innerHTML = '';
+  entries.forEach(e => {
+    const div = document.createElement('div');
+    div.style.background = 'white';
+    div.style.padding = '1rem';
+    div.style.borderRadius = '12px';
+    div.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+    div.innerHTML = `
+      <strong>${e.date}</strong> - <span>${e.mood}</span>
+      <p style="margin-top:0.5rem;">${e.text}</p>
+    `;
+    container.appendChild(div);
+  });
+}
+
+displayEntries();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Psychological Support</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-container">
+        <svg
+          class="logo"
+          viewBox="0 0 36 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z"
+            fill="white"
+            fill-opacity="0.2"
+          />
+          <path
+            d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z"
+            fill="white"
+          />
+          <path
+            d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z"
+            fill="white"
+          />
+          <path
+            d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z"
+            fill="white"
+          />
+        </svg>
+        <h1>Psychological Support</h1>
+      </div>
+      <nav>
+        <a href="index.html" class="button secondary-button">
+          <i class="fas fa-home"></i> Home
+        </a>
+        <a href="profile.html" class="button primary-button">
+          <i class="fas fa-user"></i> My Profile
+        </a>
+      </nav>
+      <a href="#" id="logout-btn" class="button secondary-button" style="margin-left: 1rem;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </header>
+
+    <div class="dashboard">
+      <div class="welcome-box fade-in-up">
+        <h2>Welcome back, User!</h2>
+        <p>
+          We're here to support your mental wellbeing journey. Explore the
+          resources below to get started.
+        </p>
+      </div>
+
+      <div class="menu-grid fade-in-up delay-1">
+        <div class="menu-card">
+          <div class="card-header">
+            <h3><i class="fas fa-comments"></i> Psychological Support</h3>
+          </div>
+          <div class="card-body">
+            <p>
+              Connect with our support system to discuss any challenges you're
+              facing. Get personalized advice and coping strategies.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="psychologial support.html" class="card-btn"
+              >Get Support</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-clipboard-check"></i> Mental Health Assessment
+            </h3>
+          </div>
+          <div class="card-body">
+            <p>
+              Take our comprehensive assessment to gain insights into your
+              current mental health status and identify areas for improvement.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="mental-health.html" class="card-btn">Start Assessment</a>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="card-header">
+            <h3><i class="fas fa-heart"></i> Positive Mental Health</h3>
+          </div>
+          <div class="card-body">
+            <p>
+              Discover personalized recommendations and exercises to boost your
+              mental wellbeing and develop healthy coping mechanisms.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="recomendation.html" class="card-btn"
+              >View Recommendations</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="card-header">
+            <h3><i class="fas fa-book"></i> Wellness Journal</h3>
+          </div>
+          <div class="card-body">
+            <p>
+              Track your mood, thoughts, and progress over time. Regular
+              journaling helps identify patterns and improvements in your
+              wellbeing.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="journal.html" class="card-btn">Open Journal</a>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="card-header">
+            <h3><i class="fas fa-users"></i> Support Community</h3>
+          </div>
+          <div class="card-body">
+            <p>
+              Connect with others on similar journeys. Share experiences, ask
+              questions, and provide support in a safe, moderated environment.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="community.html" class="card-btn">Join Community</a>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="card-header">
+            <h3><i class="fas fa-video"></i> Guided Sessions</h3>
+          </div>
+          <div class="card-body">
+            <p>
+              Access guided meditation, relaxation techniques, and stress
+              management videos led by our mental health professionals.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="sessions.html" class="card-btn">View Sessions</a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="welcome-box fade-in-up delay-2"
+        style="
+          margin-top: 2rem;
+          background: linear-gradient(135deg, #2ecc71 0%, #3498db 100%);
+        "
+      >
+        <h2>Daily Wellness Tip</h2>
+        <p>
+          "Practice mindfulness by taking 5 minutes to focus on your breathing.
+          This simple exercise can help reduce stress and improve mental
+          clarity."
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Mental Health Articles</a></li>
+            <li><a href="#">Self-Help Tools</a></li>
+            <li><a href="#">Crisis Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><a href="mailto:support@psychsupport.com">Email Support</a></li>
+            <li><a href="tel:+1800555555">Helpline: 1-800-555-5555</a></li>
+            <li><a href="#">Live Chat</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        &copy; 2025 Psychological Support. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Add welcome message with user's name
+      document.addEventListener("DOMContentLoaded", function () {
+        // This would normally be pulled from a database after login
+        // For demonstration, it's hardcoded
+        const userName = "Sarah";
+        const welcomeHeading = document.querySelector(".welcome-box h2");
+
+        if (userName && welcomeHeading) {
+          welcomeHeading.textContent = `Welcome back, ${userName}!`;
+        }
+
+        // Add animation to cards
+        const cards = document.querySelectorAll(".menu-card");
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+            card.style.transition = "all 0.5s ease";
+          }, 100 + index * 100);
+        });
+      });
+    </script>
+    <script src="auth.js"></script>
+    <script>
+      protectPage();
+      setupLogoutButton();
+
+      // Set welcome message with logged-in user's name
+      const currentUser = getCurrentUser();
+      if (currentUser) {
+        const welcomeHeading = document.querySelector(".welcome-box h2");
+        if (welcomeHeading) {
+          welcomeHeading.textContent = `Welcome back, ${currentUser.username}!`;
+        }
+      }
+    </script>
+  </body>
+</html>

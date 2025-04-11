@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprehensive Mental Health Assessment</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-container">
+        <svg
+          class="logo"
+          viewBox="0 0 36 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z"
+            fill="white"
+            fill-opacity="0.2"
+          />
+          <path
+            d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z"
+            fill="white"
+          />
+          <path
+            d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z"
+            fill="white"
+          />
+          <path
+            d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z"
+            fill="white"
+          />
+        </svg>
+        <h1>Psychological Wellbeing Center</h1>
+      </div>
+      <nav>
+        <a href="menu.html" class="button secondary-button"
+          ><i class="fas fa-arrow-left"></i> Back to Menu</a
+        >
+
+        <a href="#" class="button primary-button"
+          ><i class="fas fa-user"></i> My Profile</a
+        >
+      </nav>
+    </header>
+
+    <div class="main-content fade-in-up assessment-container">
+      <h2 class="section-title">Comprehensive Mental Health Assessment</h2>
+      <p class="section-subtitle">
+        Take our expert-designed assessment to get personalized insights and
+        recommendations
+      </p>
+
+      <div class="quote">
+        <i
+          class="fas fa-quote-left"
+          style="margin-right: 10px; opacity: 0.7"
+        ></i>
+        "Mental health is not a destination, but a process. It's about how you
+        drive, not where you're going."
+        <i
+          class="fas fa-quote-right"
+          style="margin-left: 10px; opacity: 0.7"
+        ></i>
+      </div>
+
+      <div class="quiz-container" id="quiz-container">
+        <div class="question-count">
+          <span
+            >Question <span id="currentQuestion">1</span> of
+            <span id="totalQuestions">10</span></span
+          >
+          <div class="progress-container">
+            <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <p class="question" id="question-text">Loading question...</p>
+        <div class="options" id="options-container"></div>
+
+        <button
+          class="submit-btn"
+          id="next-btn"
+          onclick="nextQuestion()"
+          style="display: none"
+        >
+          Next Question <i class="fas fa-arrow-right"></i>
+        </button>
+
+        <div id="result" class="hidden"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="copyright">
+        &copy; 2025 Psychological Wellbeing Center. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Define questions categorized by mental health domains
+      const questions = [
+        {
+          text: "How often do you feel nervous or anxious?",
+          category: "anxiety",
+        },
+        {
+          text: "Do you often have trouble sleeping due to overthinking?",
+          category: "anxiety",
+        }, // Changed options for this
+        {
+          text: "How often do you feel overwhelmed with daily responsibilities?",
+          category: "stress",
+        },
+        {
+          text: "Do you find it difficult to focus on tasks for a long time?",
+          category: "attention",
+        }, // Changed options for this
+        {
+          text: "How often do you feel lonely even when surrounded by people?",
+          category: "depression",
+        },
+        {
+          text: "How often do you feel a sense of accomplishment in your daily life?",
+          category: "wellbeing",
+          inverted: true,
+        }, // Changed options for this
+        {
+          text: "Do you struggle with negative thoughts about yourself?",
+          category: "selfesteem",
+        }, // Changed options for this
+        {
+          text: "How often do you engage in activities that bring you joy?",
+          category: "wellbeing",
+          inverted: true,
+        }, // Changed options for this
+        {
+          text: "Do you often feel physically exhausted even after adequate rest?",
+          category: "burnout",
+        },
+        {
+          text: "How easy is it for you to relax after a stressful day?",
+          category: "stress",
+          inverted: true,
+        }, // Changed options for this
+      ];
+
+      // Define option labels and icons
+      const standardOptions = ["Rarely", "Sometimes", "Often", "Always"];
+      const standardIcons = [
+        "far fa-smile",
+        "far fa-meh",
+        "far fa-frown",
+        "far fa-dizzy",
+      ];
+
+      const frequencyOptions = [
+        "Never",
+        "Once a week",
+        "Several times a week",
+        "Daily",
+      ];
+      const frequencyIcons = [
+        "fas fa-ban",
+        "fas fa-calendar-day",
+        "fas fa-calendar-week",
+        "fas fa-calendar",
+      ];
+
+      const agreementOptions = [
+        "Strongly disagree",
+        "Disagree",
+        "Agree",
+        "Strongly agree",
+      ]; // Simplified slightly
+      const agreementIcons = [
+        "fas fa-times-circle",
+        "fas fa-minus-circle",
+        "fas fa-check-circle",
+        "fas fa-check-double",
+      ];
+
+      const difficultyOptions = [
+        "Very easy",
+        "Somewhat easy",
+        "Somewhat difficult",
+        "Very difficult",
+      ];
+      const difficultyIcons = [
+        "fas fa-bolt",
+        "fas fa-running",
+        "fas fa-walking",
+        "fas fa-wheelchair",
+      ];
+
+      // Map questions to appropriate option sets (INDEX-BASED)
+      // Ensure this mapping matches the order and intent of your questions array
+      const questionOptionsMap = {
+        0: { options: standardOptions, icons: standardIcons }, // How often nervous?
+        1: { options: standardOptions, icons: standardIcons }, // Trouble sleeping? (Using standard freq)
+        2: { options: standardOptions, icons: standardIcons }, // Overwhelmed?
+        3: { options: difficultyOptions, icons: difficultyIcons }, // Difficult to focus? (Using difficulty)
+        4: { options: standardOptions, icons: standardIcons }, // Feel lonely?
+        5: { options: frequencyOptions, icons: frequencyIcons }, // Accomplishment? (Using freq)
+        6: { options: agreementOptions, icons: agreementIcons }, // Negative thoughts? (Using agreement)
+        7: { options: frequencyOptions, icons: frequencyIcons }, // Joyful activities? (Using freq)
+        8: { options: standardOptions, icons: standardIcons }, // Physically exhausted?
+        9: { options: difficultyOptions, icons: difficultyIcons }, // Easy to relax? (Using difficulty - inverted)
+      };
+
+      let currentQuestionIndex = 0;
+      let selectedAnswer = null;
+      let scores = {
+        anxiety: 0,
+        stress: 0,
+        attention: 0,
+        depression: 0,
+        wellbeing: 0,
+        selfesteem: 0,
+        burnout: 0,
+      };
+      let answers = []; // Stores the index of the selected answer for each question
+
+      // --- DOM Elements ---
+      const questionTextEl = document.getElementById("question-text");
+      const optionsContainerEl = document.getElementById("options-container");
+      const nextBtnEl = document.getElementById("next-btn");
+      const currentQuestionEl = document.getElementById("currentQuestion");
+      const totalQuestionsEl = document.getElementById("totalQuestions");
+      const progressBarEl = document.getElementById("progress-bar");
+      const resultDivEl = document.getElementById("result");
+      const quizContainerEl = document.getElementById("quiz-container");
+      const questionCountEl = document.querySelector(".question-count");
+
+      function displayQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+          showResult();
+          return;
+        }
+
+        const currentQuestion = questions[currentQuestionIndex];
+        const questionConfig = questionOptionsMap[currentQuestionIndex];
+
+        if (!questionConfig) {
+          console.error(
+            `No options configured for question index ${currentQuestionIndex}`
+          );
+          // Handle error - maybe skip question or show a default
+          optionsContainerEl.innerHTML = "<p>Error loading options.</p>";
+          questionTextEl.innerText = currentQuestion.text;
+          return;
+        }
+
+        const options = questionConfig.options;
+        const icons = questionConfig.icons;
+
+        // Update question text
+        questionTextEl.innerText = currentQuestion.text;
+
+        // Update question counter
+        currentQuestionEl.innerText = currentQuestionIndex + 1;
+
+        // Clear previous options
+        optionsContainerEl.innerHTML = "";
+
+        // Create and append new option buttons
+        options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.className = "option-btn";
+          // Use a closure to correctly capture the 'index' for each button's click handler
+          button.onclick = function () {
+            selectAnswer(index);
+          };
+
+          const iconSpan = document.createElement("span");
+          iconSpan.className = "option-icon";
+          iconSpan.innerHTML = `<i class="${icons[index]}"></i>`;
+
+          button.appendChild(iconSpan);
+          button.appendChild(document.createTextNode(" " + option)); // Add space for readability
+
+          optionsContainerEl.appendChild(button);
+        });
+
+        // Update progress bar
+        const progressPercentage =
+          (currentQuestionIndex / questions.length) * 100; // Progress before answering current question
+        progressBarEl.style.width = `${progressPercentage}%`;
+
+        // Hide next button until an answer is selected
+        nextBtnEl.style.display = "none";
+        selectedAnswer = null; // Reset selection for the new question
+      }
+
+      function selectAnswer(index) {
+        selectedAnswer = index; // Store the selected answer index
+
+        // Remove 'selected' class from all buttons
+        document
+          .querySelectorAll("#options-container .option-btn")
+          .forEach((btn) => {
+            btn.classList.remove("selected");
+          });
+
+        // Add 'selected' class to the clicked button
+        // Need to get the buttons again as they are recreated each time
+        const buttons = optionsContainerEl.getElementsByClassName("option-btn");
+        if (buttons[index]) {
+          buttons[index].classList.add("selected");
+        }
+
+        // Show the next button
+        nextBtnEl.style.display = "block";
+      }
+
+      function nextQuestion() {
+        if (selectedAnswer === null) return; // Don't proceed if no answer selected
+
+        // Save answer and update score
+        answers.push(selectedAnswer);
+
+        const currentQuestion = questions[currentQuestionIndex];
+        const category = currentQuestion.category;
+
+        // Score calculation (0-3). For inverted questions, reverse the score.
+        const score = currentQuestion.inverted
+          ? 3 - selectedAnswer
+          : selectedAnswer;
+
+        // Initialize category score if it doesn't exist (safer)
+        if (!scores[category]) {
+          scores[category] = 0;
+        }
+        scores[category] += score;
+
+        // Move to the next question index
+        currentQuestionIndex++;
+
+        // Update progress bar AFTER processing the answer for the completed question
+        const progressPercentage =
+          (currentQuestionIndex / questions.length) * 100;
+        progressBarEl.style.width = `${progressPercentage}%`;
+
+        // Display the next question or results
+        displayQuestion();
+      }
+
+      function calculateOverallScore() {
+        const maxCategoryScores = {};
+        const categoryCounts = {};
+
+        questions.forEach((q) => {
+          const category = q.category;
+          if (!categoryCounts[category]) {
+            categoryCounts[category] = 0;
+            maxCategoryScores[category] = 0;
+          }
+          categoryCounts[category]++;
+          maxCategoryScores[category] += 3; // Max score per question is 3 (index 0, 1, 2, 3)
+        });
+
+        const percentageScores = {};
+        let totalScore = 0;
+        let maxTotalScore = 0;
+
+        for (const category in scores) {
+          // Check if the category actually had questions and score calculated
+          if (categoryCounts[category]) {
+            percentageScores[category] = Math.round(
+              (scores[category] / maxCategoryScores[category]) * 100
+            );
+            totalScore += scores[category];
+            maxTotalScore += maxCategoryScores[category];
+          } else {
+            // If a category in scores has no questions, handle appropriately (e.g., assign 0% or ignore)
+            percentageScores[category] = 0; // Or handle as needed
+            console.warn(
+              `Category "${category}" has score but no matching questions found.`
+            );
+          }
+        }
+
+        // Calculate overall percentage score - avoid division by zero if no questions
+        const overallPercentage =
+          maxTotalScore > 0
+            ? Math.round((totalScore / maxTotalScore) * 100)
+            : 0;
+
+        return {
+          overall: overallPercentage,
+          categories: percentageScores,
+        };
+      }
+
+      function getRecommendation(scoreResult) {
+        const overallScore = scoreResult.overall;
+        const categoryScores = scoreResult.categories;
+
+        let recommendation = "";
+
+        // Overall recommendation based on score
+        // Note: Higher percentage score means more issues (more "Often", "Always", "Strongly Agree" to negative items)
+        if (overallScore <= 25) {
+          recommendation =
+            "Your responses suggest you are generally managing well. Continue maintaining your positive habits and self-care routines.";
+        } else if (overallScore <= 50) {
+          recommendation =
+            "Your responses indicate some mild concerns. Consider incorporating mindfulness, relaxation techniques, and regular exercise into your routine.";
+        } else if (overallScore <= 75) {
+          recommendation =
+            "Your responses suggest moderate concerns. You might benefit from talking to a counselor or mental health professional about specific areas affecting your wellbeing.";
+        } else {
+          recommendation =
+            "Your responses indicate significant concerns. We strongly recommend seeking professional mental health support as soon as possible.";
+        }
+
+        // Additional category-specific recommendations
+        let specificRecommendations = [];
+        const threshold = 60; // Trigger recommendation if category score is above this %
+        const lowThreshold = 40; // Trigger recommendation if category score is below this % (for positive attributes like wellbeing)
+
+        if (categoryScores.anxiety > threshold) {
+          specificRecommendations.push(
+            "Your anxiety levels appear elevated. Consider anxiety-management techniques like deep breathing exercises, progressive muscle relaxation, or mindfulness meditation."
+          );
+        }
+        if (categoryScores.depression > threshold) {
+          specificRecommendations.push(
+            "Your responses indicate some depressive symptoms. Regular physical activity, social connection, and maintaining a routine can help, but professional support is recommended."
+          );
+        }
+        if (categoryScores.stress > threshold) {
+          specificRecommendations.push(
+            "Your stress levels appear high. Consider stress management techniques such as time-management strategies, setting boundaries, and regular relaxation practices."
+          );
+        }
+        if (categoryScores.burnout > threshold) {
+          specificRecommendations.push(
+            "You may be experiencing signs of burnout. Consider evaluating your work-life balance and implementing regular recovery periods."
+          );
+        }
+        if (categoryScores.attention > threshold) {
+          // High score means more difficulty focusing
+          specificRecommendations.push(
+            "You might be experiencing difficulties with focus and attention. Consider techniques like the Pomodoro method, minimizing distractions, and regular short breaks."
+          );
+        }
+        // For selfesteem, a high score indicates more agreement with "struggle with negative thoughts"
+        if (categoryScores.selfesteem > threshold) {
+          specificRecommendations.push(
+            "Consider practices that build self-compassion and challenge negative self-talk to improve your relationship with yourself."
+          );
+        }
+        // For wellbeing, a low score indicates fewer positive experiences (inverted scoring)
+        if (categoryScores.wellbeing < lowThreshold) {
+          // Note: checking if wellbeing is LOW
+          specificRecommendations.push(
+            "Try to incorporate more activities that bring you joy and meaning, and consider keeping a gratitude journal to boost overall wellbeing."
+          );
+        }
+
+        return {
+          main: recommendation,
+          specific: specificRecommendations,
+        };
+      }
+
+      function showResult() {
+        // Hide quiz elements
+        if (questionCountEl) questionCountEl.style.display = "none";
+        if (questionTextEl) questionTextEl.style.display = "none";
+        if (optionsContainerEl) optionsContainerEl.style.display = "none";
+        if (nextBtnEl) nextBtnEl.style.display = "none";
+        if (progressBarEl.parentElement)
+          progressBarEl.parentElement.style.display = "none"; // Hide progress container
+
+        // Calculate scores
+        const scoreResult = calculateOverallScore();
+        const recommendations = getRecommendation(scoreResult);
+
+        // Store recommendation in localStorage (optional, but included from your code)
+        try {
+          localStorage.setItem("quizRecommendation", recommendations.main);
+          localStorage.setItem(
+            "specificRecommendations",
+            JSON.stringify(recommendations.specific)
+          );
+        } catch (e) {
+          console.error("Could not save recommendations to localStorage:", e);
+        }
+
+        // Generate category icons
+        const categoryIcons = {
+          anxiety: "fas fa-brain",
+          stress: "fas fa-bolt",
+          attention: "fas fa-bullseye",
+          depression: "fas fa-cloud-rain",
+          wellbeing: "fas fa-heart",
+          selfesteem: "fas fa-crown",
+          burnout: "fas fa-fire",
+        };
+
+        // Ensure resultDiv exists and is visible
+        if (!resultDivEl) {
+          console.error("Result container element not found!");
+          return;
+        }
+        resultDivEl.classList.remove("hidden");
+        resultDivEl.innerHTML = ""; // Clear previous results if any
+
+        // --- Create Result HTML ---
+        let resultHTML = `
+                <div class="result-header">Your Assessment Results</div>
+
+                <div class="score-container">
+                    <div class="score-chart">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="chart-bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="chart-progress" cx="50" cy="50" r="40"
+                                stroke-dasharray="${2 * Math.PI * 40}"
+                                stroke-dashoffset="${
+                                  2 *
+                                  Math.PI *
+                                  40 *
+                                  (1 - scoreResult.overall / 100)
+                                }"></circle>
+                            <text class="chart-text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">${
+                              scoreResult.overall
+                            }%</text>
+                        </svg>
+                    </div>
+                    <div class="score-details">
+                        <div class="score-title">Overall Mental Health Score</div>
+                        <p>Higher scores indicate areas needing more attention.</p> </div>
+                </div>
+
+                <div class="category-scores">
+            `;
+
+        // Add category scores dynamically
+        for (const category in scoreResult.categories) {
+          if (
+            categoryIcons[category] &&
+            typeof scoreResult.categories[category] === "number"
+          ) {
+            // Check if score exists and is valid
+            resultHTML += `
+                    <div class="category-card">
+                        <div class="category-icon"><i class="${
+                          categoryIcons[category]
+                        }"></i></div>
+                        <div class="category-name">${
+                          category.charAt(0).toUpperCase() + category.slice(1)
+                        }</div>
+                        <div class="category-score">${
+                          scoreResult.categories[category]
+                        }%</div>
+                    </div>
+                    `;
+          }
+        }
+
+        resultHTML += `</div>`; // Close category-scores
+
+        // Add Main Recommendation
+        resultHTML += `
+                <div class="recommendation">
+                    <div class="recommendation-header">Main Recommendation</div>
+                    <p>${recommendations.main}</p>
+                </div>
+             `;
+
+        // Add Specific Recommendations if any exist
+        if (recommendations.specific.length > 0) {
+          resultHTML += `
+                    <div class="recommendation">
+                        <div class="recommendation-header">Specific Recommendations</div>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">`;
+          recommendations.specific.forEach((rec) => {
+            resultHTML += `<li style="margin-bottom: 0.5rem;">${rec}</li>`;
+          });
+          resultHTML += `</ul></div>`;
+        }
+
+        // Add Resources Section
+        resultHTML += `
+                <div class="resources">
+                    <div class="recommendation-header">Helpful Resources</div>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <div class="resource-icon"><i class="fas fa-book"></i></div>
+                            <div class="resource-title">Self-Help Library</div>
+                            <div class="resource-desc">Access articles, tools, and guides.</div>
+                        </div>
+                        <div class="resource-item">
+                            <div class="resource-icon"><i class="fas fa-users"></i></div>
+                            <div class="resource-title">Support Groups</div>
+                            <div class="resource-desc">Connect with others facing similar challenges.</div>
+                        </div>
+                        <div class="resource-item">
+                             <div class="resource-icon"><i class="fas fa-user-md"></i></div>
+                            <div class="resource-title">Professional Help</div>
+                            <div class="resource-desc">Find licensed therapists and counselors.</div>
+                        </div>
+                    </div>
+                </div>
+             `;
+
+        // Add Action Buttons
+        // Ensure recommendations.html exists or change the link
+        resultHTML += `
+                <div class="action-btns">
+                    <a href="#" onclick="restartQuiz(event)" class="secondary-action">Retake Quiz</a>
+                    <a href="recomendation.html" class="primary-action">View Detailed Recommendations <i class="fas fa-arrow-right"></i></a>
+                 </div>
+             `; // Added a placeholder link for detailed recommendations
+
+        // Add result HTML to the page
+        resultDivEl.innerHTML = resultHTML;
+      }
+
+      function restartQuiz(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Reset state variables
+        currentQuestionIndex = 0;
+        selectedAnswer = null;
+        scores = {
+          anxiety: 0,
+          stress: 0,
+          attention: 0,
+          depression: 0,
+          wellbeing: 0,
+          selfesteem: 0,
+          burnout: 0,
+        };
+        answers = [];
+
+        // Hide results and show quiz elements
+        resultDivEl.classList.add("hidden");
+        resultDivEl.innerHTML = ""; // Clear result content
+
+        if (questionCountEl) questionCountEl.style.display = "block"; // Or flex/grid depending on CSS
+        if (questionTextEl) questionTextEl.style.display = "block";
+        if (optionsContainerEl) optionsContainerEl.style.display = "grid"; // Or flex/block depending on CSS
+        if (progressBarEl.parentElement)
+          progressBarEl.parentElement.style.display = "block"; // Show progress container
+
+        // Update total questions count (in case it was hidden)
+        totalQuestionsEl.innerText = questions.length;
+
+        // Display the first question
+        displayQuestion();
+      }
+
+      // --- Initial Setup ---
+      // Wait for the DOM to be fully loaded before running setup
+      document.addEventListener("DOMContentLoaded", function () {
+        if (!questions || questions.length === 0) {
+          quizContainerEl.innerHTML = "<p>Error: No questions loaded.</p>";
+          return;
+        }
+        totalQuestionsEl.innerText = questions.length;
+        displayQuestion(); // Display the first question
+      });
+    </script>
+  </body>
+</html>
