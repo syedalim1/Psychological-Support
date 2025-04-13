@@ -1,30 +1,154 @@
-/* Add specific styles for profile page layout if needed */
+/* Profile Page Specific Styles */
 .profile-content {
-    max-width: 700px;
-    margin: 5rem auto;
-    padding: 2.5rem;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 15px 35px rgba(94, 114, 228, 0.1);
-    text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
-.profile-picture-container {
-    margin-bottom: 2rem;
-}
-.profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #e2e8f0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+
 .profile-content h2 {
-     margin-bottom: 2rem;
-     color: #2d3748;
-     font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-size: 1.8rem;
 }
-/* Adjust icon position for select */
-.form-group select + .icon {
-     top: 40px; /* Align with input icons */
+
+.profile-picture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 8px rgba(78, 103, 235, 0.3);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 1rem 1rem 1rem 2.5rem;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(78, 103, 235, 0.2);
+}
+
+.form-group .icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 2.5rem;
+  color: var(--gray-300);
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: var(--gradient-1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(78, 103, 235, 0.3);
+}
+
+/* Style for form validation */
+.form-group input:invalid {
+  border-color: var(--danger);
+}
+
+.form-group input:valid {
+  border-color: var(--success);
+}
+
+/* Added profile info display for localStorage data */
+.profile-info {
+  background-color: var(--gray-100);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: none;
+}
+
+.profile-info p {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.profile-info p i {
+  width: 20px;
+  margin-right: 0.8rem;
+  color: var(--primary);
+}
+
+.edit-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem auto;
+  transition: var(--transition);
+}
+
+.edit-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .profile-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+  }
 }

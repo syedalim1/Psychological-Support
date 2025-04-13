@@ -1,0 +1,144 @@
+/* mental-health.css - Styles for the Mental Health Assessment Page */
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f7fafc;
+  margin: 0;
+  padding: 0;
+  color: #22223b;
+}
+
+.header {
+  background: linear-gradient(90deg, #3a5a98 0%, #6a82fb 100%);
+  color: #fff;
+  padding: 1.5rem 0 1rem 0;
+  box-shadow: 0 4px 16px rgba(58,90,152,0.08);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 2rem;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+}
+
+.header h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  margin-right: 2rem;
+  justify-content: flex-end;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-button {
+  background: #3a5a98;
+  color: #fff;
+}
+
+.primary-button:hover {
+  background: #22336b;
+}
+
+.secondary-button {
+  background: #e2e8f0;
+  color: #3a5a98;
+}
+
+.secondary-button:hover {
+  background: #cbd5e1;
+}
+
+.main-content {
+  max-width: 520px;
+  margin: 3rem auto 2rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #3a5a98;
+  margin-bottom: 0.7rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.quote {
+  font-style: italic;
+  color: #6a82fb;
+  background: #e9f0fb;
+  border-left: 4px solid #3a5a98;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.submit-btn {
+  background: #3a5a98;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(58,90,152,0.08);
+}
+
+.submit-btn:hover {
+  background: #22336b;
+}
+
+.footer {
+  background: #3a5a98;
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0 0.7rem 0;
+  border-radius: 0 0 18px 18px;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .section-title {
+    font-size: 1.3rem;
+  }
+}

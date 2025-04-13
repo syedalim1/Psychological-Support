@@ -1,0 +1,345 @@
+/* =======================
+   Sessions Page Styles
+   ======================= */
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: var(--transition);
+  padding: 1.5rem;
+  text-align: left;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  color: var(--dark);
+}
+
+.card p {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.card-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-1);
+  margin-bottom: 1rem;
+}
+
+.card-icon-fa {
+  font-size: 1.8rem;
+  color: white;
+}
+
+/* Quote Styling */
+.quote {
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gray-800);
+  max-width: 700px;
+  margin: 2rem auto 3rem;
+  padding: 1.5rem;
+  border-left: 4px solid var(--primary);
+  background: var(--gray-100);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  position: relative;
+}
+
+.quote::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.3;
+  position: absolute;
+  top: -1rem;
+  left: 0.5rem;
+  font-family: Georgia, serif;
+}
+
+/* Session Controls */
+.session-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.progress-container {
+  flex: 1;
+  background: var(--gray-200);
+  height: 8px;
+  border-radius: 4px;
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--gradient-2);
+  width: 45%;
+}
+
+.play-button {
+  background: var(--gradient-1);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(78, 103, 235, 0.3);
+  transition: var(--transition);
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+/* Session Categories */
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category-tab {
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: 50px;
+  font-weight: 600;
+  color: var(--gray-800);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-tab:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.category-tab.active {
+  background: var(--gradient-1);
+  color: white;
+  border-color: transparent;
+}
+
+/* Session Timer */
+.timer-container {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.timer {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.timer-button {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.start-button {
+  background: var(--gradient-2);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+}
+
+.start-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(52, 199, 89, 0.4);
+}
+
+.reset-button {
+  background: white;
+  color: var(--dark);
+  border: 2px solid var(--gray-300);
+}
+
+.reset-button:hover {
+  background: var(--gray-100);
+}
+
+/* Session Notes */
+.notes-container {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-top: 3rem;
+  box-shadow: var(--box-shadow);
+}
+
+.notes-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+.notes-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.notes-form textarea {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300);
+  margin-bottom: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.save-notes {
+  background: var(--gradient-1);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.save-notes:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(78, 103, 235, 0.3);
+}
+
+/* Responsive adjustments for sessions page */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timer {
+    font-size: 2.5rem;
+  }
+
+  .category-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-tab {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+/* Featured session highlight */
+.featured-session {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  margin-bottom: 3rem;
+  background: var(--gradient-3);
+  padding: 2rem;
+  color: white;
+  text-align: left;
+}
+
+.featured-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.featured-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.featured-text p {
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.featured-button {
+  background: white;
+  color: var(--accent-color);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.featured-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.featured-image {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .featured-content {
+    grid-template-columns: 1fr;
+  }
+}

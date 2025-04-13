@@ -1,62 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Guided Sessions - Psychological Support</title>
-<link rel="stylesheet" href="style.css" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-</head>
-<body>
-<header class="header">
-  <div class="logo-container">
-    <svg class="logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z" fill="white" fill-opacity="0.2"/>
-      <path d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z" fill="white"/>
-      <path d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z" fill="white"/>
-      <path d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z" fill="white"/>
-    </svg>
-    <h1>Psychological Support</h1>
-  </div>
-  <nav>
-    <a href="menu.html" class="button secondary-button"><i class="fas fa-arrow-left"></i> Back to Menu</a>
-    <a href="profile.html" class="button primary-button"><i class="fas fa-user"></i> My Profile</a>
-  </nav>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guided Sessions - Psychological Support</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/sessions.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-container">
+        <svg
+          class="logo"
+          viewBox="0 0 36 36"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 2C9.163 2 2 9.163 2 18C2 26.837 9.163 34 18 34C26.837 34 34 26.837 34 18C34 9.163 26.837 2 18 2Z"
+            fill="white"
+            fill-opacity="0.2"
+          />
+          <path
+            d="M13 15C14.6569 15 16 13.6569 16 12C16 10.3431 14.6569 9 13 9C11.3431 9 10 10.3431 10 12C10 13.6569 11.3431 15 13 15Z"
+            fill="white"
+          />
+          <path
+            d="M23 15C24.6569 15 26 13.6569 26 12C26 10.3431 24.6569 9 23 9C21.3431 9 20 10.3431 20 12C20 13.6569 21.3431 15 23 15Z"
+            fill="white"
+          />
+          <path
+            d="M18 28C22.4183 28 26 24.4183 26 20H10C10 24.4183 13.5817 28 18 28Z"
+            fill="white"
+          />
+        </svg>
+        <h1>Psychological Support</h1>
+      </div>
+      <nav>
+        <a href="menu.html" class="button secondary-button"
+          ><i class="fas fa-arrow-left"></i> Back to Menu</a
+        >
+        <a href="profile.html" class="button primary-button"
+          ><i class="fas fa-user"></i> My Profile</a
+        >
+      </nav>
+    </header>
 
-<div class="main-content fade-in-up">
-  <h2 class="section-title">Guided Sessions</h2>
-  <p class="section-subtitle">Meditation, relaxation, and stress management techniques.</p>
+    <div class="main-content fade-in-up">
+      <h2 class="section-title">Guided Sessions</h2>
+      <p class="section-subtitle">
+        Meditation, relaxation, and stress management techniques to improve your
+        mental wellbeing.
+      </p>
 
-  <div class="quote">
-    "Almost everything will work again if you unplug it for a few minutes, including you."
-  </div>
+      <div class="category-tabs">
+        <div class="category-tab active">All Sessions</div>
+        <div class="category-tab">Meditation</div>
+        <div class="category-tab">Sleep & Relaxation</div>
+        <div class="category-tab">Stress Relief</div>
+        <div class="category-tab">Mindfulness</div>
+        <div class="category-tab">Focus & Productivity</div>
+      </div>
 
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-icon-container"><i class="fas fa-spa card-icon-fa"></i></div>
-      <h3>5-Minute Breathing Meditation</h3>
-      <iframe width="100%" height="215" src="https://www.youtube.com/embed/SEfs5TJZ6Nk" title="Breathing Meditation" frameborder="0" allowfullscreen></iframe>
+      <div class="featured-session">
+        <div class="featured-badge">Featured</div>
+        <div class="featured-content">
+          <div class="featured-text">
+            <h3>30-Day Mindfulness Challenge</h3>
+            <p>
+              Join our 30-day program designed to help you build a daily
+              mindfulness practice. Each day features a short guided meditation
+              focused on a different aspect of mindfulness.
+            </p>
+            <button class="featured-button">
+              <i class="fas fa-play-circle"></i> Start Challenge
+            </button>
+          </div>
+          <div class="featured-image">
+            <img
+              src="MindfulnessChallenge.webp"
+              alt="Mindfulness Challenge"
+              width="100%"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        "Almost everything will work again if you unplug it for a few minutes,
+        including you." <br />
+        <em>— Anne Lamott</em>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon-container">
+            <i class="fas fa-spa card-icon-fa"></i>
+          </div>
+          <h3>5-Minute Breathing Meditation</h3>
+          <p>
+            A quick breathing exercise to center yourself during a busy day.
+            Perfect for beginners and those with limited time.
+          </p>
+          <iframe
+            width="100%"
+            height="215"
+            src="https://www.youtube.com/embed/SEfs5TJZ6Nk"
+            title="Breathing Meditation"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <div class="session-controls">
+            <button class="play-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <span>2:15</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-container">
+            <i class="fas fa-moon card-icon-fa"></i>
+          </div>
+          <h3>Relaxation for Better Sleep</h3>
+          <p>
+            Wind down with this guided relaxation designed to prepare your mind
+            and body for restful sleep.
+          </p>
+          <iframe
+            width="100%"
+            height="215"
+            src="https://www.youtube.com/embed/ZToicYcHIOU"
+            title="Sleep Relaxation"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <div class="session-controls">
+            <button class="play-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <span>10:30</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-container">
+            <i class="fas fa-heartbeat card-icon-fa"></i>
+          </div>
+          <h3>Stress Relief Meditation</h3>
+          <p>
+            Release tension and calm your nervous system with this guided
+            meditation focusing on stress reduction.
+          </p>
+          <iframe
+            width="100%"
+            height="215"
+            src="https://www.youtube.com/embed/MIr3RsUWrdo"
+            title="Stress Relief"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <div class="session-controls">
+            <button class="play-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <span>8:45</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-container">
+            <i class="fas fa-brain card-icon-fa"></i>
+          </div>
+          <h3>Focus Enhancement</h3>
+          <p>
+            Improve your concentration and mental clarity with this guided
+            meditation designed to enhance focus.
+          </p>
+          <iframe
+            width="100%"
+            height="215"
+            src="https://www.youtube.com/embed/xoYnqvadurg"
+            title="Focus Enhancement"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <div class="session-controls">
+            <button class="play-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <span>12:20</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-container">
+            <i class="fas fa-water card-icon-fa"></i>
+          </div>
+          <h3>Body Scan Meditation</h3>
+          <p>
+            A comprehensive guided meditation that helps you reconnect with your
+            body and release physical tension.
+          </p>
+          <iframe
+            width="100%"
+            height="215"
+            src="https://www.youtube.com/embed/QS2yDmWk0vs"
+            title="Body Scan"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <div class="session-controls">
+            <button class="play-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <span>15:05</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon-container">
+            <i class="fas fa-cloud-sun card-icon-fa"></i>
+          </div>
+          <h3>Morning Mindfulness</h3>
+          <p>
+            Start your day with intention and presence using this morning
+            meditation practice for positive energy.
+          </p>
+          <iframe
+            width="100%"
+            height="215"
+            src="https://www.youtube.com/embed/ENYYb5mJAy0"
+            title="Morning Mindfulness"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+          <div class="session-controls">
+            <button class="play-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar"></div>
+            </div>
+            <span>7:50</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timer-container">
+        <h3>Meditation Timer</h3>
+        <div class="timer">10:00</div>
+        <div class="timer-buttons">
+          <button class="timer-button start-button">
+            <i class="fas fa-play"></i> Start
+          </button>
+          <button class="timer-button reset-button">
+            <i class="fas fa-redo"></i> Reset
+          </button>
+        </div>
+      </div>
+
+      <div class="notes-container">
+        <h3 class="notes-title">
+          <i class="fas fa-pencil-alt notes-icon"></i> Session Notes
+        </h3>
+        <p>Record your thoughts and reflections after completing a session:</p>
+        <div class="notes-form">
+          <textarea
+            placeholder="How did you feel during and after the session? What insights did you have?"
+          ></textarea>
+          <button class="save-notes">Save Notes</button>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon-container"><i class="fas fa-moon card-icon-fa"></i></div>
-      <h3>Relaxation for Better Sleep</h3>
-      <iframe width="100%" height="215" src="https://www.youtube.com/embed/ZToicYcHIOU" title="Sleep Relaxation" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="card">
-      <div class="card-icon-container"><i class="fas fa-heartbeat card-icon-fa"></i></div>
-      <h3>Stress Relief Meditation</h3>
-      <iframe width="100%" height="215" src="https://www.youtube.com/embed/MIr3RsUWrdo" title="Stress Relief" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-</div>
 
-<footer class="footer">
-  <div class="copyright">
-    &copy; 2025 Psychological Support. All rights reserved.
-  </div>
-</footer>
-
-</body>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Crisis Hotline</a></li>
+            <li><a href="#">Find a Therapist</a></li>
+            <li><a href="#">Support Groups</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <ul>
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Psychological Support. All rights reserved.
+      </div>
+    </footer>
+  </body>
 </html>
