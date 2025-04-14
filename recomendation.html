@@ -29,10 +29,8 @@
 <div class="main-content fade-in-up">
   <div class="tab-container">
     <div class="tabs">
-      <div class="tab active" data-tab="recommendations">Recommendations</div>
-      <div class="tab" data-tab="tracker">Mood & Progress</div>
-      <div class="tab" data-tab="exercises">Exercises</div>
-      <div class="tab" data-tab="resources">Resources</div>
+      <div class="tab " data-tab="recommendations">Recommendations</div>
+      
     </div>
     
     <div class="tab-content active" id="recommendations-content">
@@ -90,27 +88,6 @@
           <p>Spend time in nature to boost your mood and reduce stress.</p>
         </li>
       </ul>
-      
-      <div class="feedback-form">
-        <h3>How helpful was this information?</h3>
-        <form id="feedback-form">
-          <div class="form-group">
-            <label class="form-label">Rate your experience (1-5):</label>
-            <div style="display: flex; gap: 10px;">
-              <input type="radio" name="rating" value="1" id="star1"><label for="star1">1</label>
-              <input type="radio" name="rating" value="2" id="star2"><label for="star2">2</label>
-              <input type="radio" name="rating" value="3" id="star3"><label for="star3">3</label>
-              <input type="radio" name="rating" value="4" id="star4"><label for="star4">4</label>
-              <input type="radio" name="rating" value="5" id="star5"><label for="star5">5</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="feedback-comments">Additional comments:</label>
-            <textarea class="form-textarea" id="feedback-comments" placeholder="Share your thoughts on these recommendations..."></textarea>
-          </div>
-          <button type="button" class="submit-btn" onclick="saveFeedback()">Submit Feedback</button>
-        </form>
-      </div>
     </div>
     
     <div class="tab-content" id="tracker-content">
@@ -459,50 +436,6 @@ function updateProgress() {
   alert('Progress tracking feature will be available in the next update!');
 }
 
-// Feedback form submission
-function saveFeedback() {
-  const form = document.getElementById('feedback-form');
-  const rating = form.querySelector('input[name="rating"]:checked');
-  const comments = document.getElementById('feedback-comments').value;
-  
-  if (!rating) {
-    alert('Please select a rating before submitting.');
-    return;
-  }
-  // Feedback form submission
-function saveFeedback() {
-  const form = document.getElementById('feedback-form');
-  const rating = form.querySelector('input[name="rating"]:checked');
-  const comments = document.getElementById('feedback-comments').value;
-  
-  if (!rating) {
-    alert('Please select a rating before submitting.');
-    return;
-  }
-  
-  // Save to local storage
-  localStorage.setItem('feedback_rating', rating.value);
-  localStorage.setItem('feedback_comments', comments);
-  
-  // Show confirmation message
-  alert('Thank you for your feedback!');
-  
-  // Reset form
-  form.reset();
-}
-
-// Check for previously submitted feedback
-const storedRating = localStorage.getItem('feedback_rating');
-const storedComments = localStorage.getItem('feedback_comments');
-
-if (storedRating) {
-  const ratingInput = document.querySelector(`input[name="rating"][value="${storedRating}"]`);
-  if (ratingInput) {
-    ratingInput.checked = true;
-  }
-}
-
-if (storedComments) {
-  document.getElementById('feedback-comments').value = storedComments;
-}
-}
+</script>
+</body>
+</html>

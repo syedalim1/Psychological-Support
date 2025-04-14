@@ -213,19 +213,10 @@
       </div>
     </footer>
 
+    <script src="auth.js"></script>
     <script>
-      // Add welcome message with user's name
+      // Add animation to cards on load
       document.addEventListener("DOMContentLoaded", function () {
-        // This would normally be pulled from a database after login
-        // For demonstration, it's hardcoded
-        const userName = "Sarah";
-        const welcomeHeading = document.querySelector(".welcome-box h2");
-
-        if (userName && welcomeHeading) {
-          welcomeHeading.textContent = `Welcome back, ${userName}!`;
-        }
-
-        // Add animation to cards
         const cards = document.querySelectorAll(".menu-card");
         cards.forEach((card, index) => {
           card.style.opacity = "0";
@@ -235,12 +226,11 @@
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
             card.style.transition = "all 0.5s ease";
-          }, 100 + index * 100);
+          }, 100 + index * 100); // Staggered animation
         });
       });
-    </script>
-    <script src="auth.js"></script>
-    <script>
+
+      // Protect page and setup logout
       protectPage();
       setupLogoutButton();
 

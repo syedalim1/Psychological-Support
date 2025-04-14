@@ -58,14 +58,7 @@
         mental wellbeing.
       </p>
 
-      <div class="category-tabs">
-        <div class="category-tab active">All Sessions</div>
-        <div class="category-tab">Meditation</div>
-        <div class="category-tab">Sleep & Relaxation</div>
-        <div class="category-tab">Stress Relief</div>
-        <div class="category-tab">Mindfulness</div>
-        <div class="category-tab">Focus & Productivity</div>
-      </div>
+  
 
       <div class="featured-session">
         <div class="featured-badge">Featured</div>
@@ -98,34 +91,6 @@
       </div>
 
       <div class="card-grid">
-        <div class="card">
-          <div class="card-icon-container">
-            <i class="fas fa-spa card-icon-fa"></i>
-          </div>
-          <h3>5-Minute Breathing Meditation</h3>
-          <p>
-            A quick breathing exercise to center yourself during a busy day.
-            Perfect for beginners and those with limited time.
-          </p>
-          <iframe
-            width="100%"
-            height="215"
-            src="https://www.youtube.com/embed/SEfs5TJZ6Nk"
-            title="Breathing Meditation"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-          <div class="session-controls">
-            <button class="play-button">
-              <i class="fas fa-play"></i>
-            </button>
-            <div class="progress-container">
-              <div class="progress-bar"></div>
-            </div>
-            <span>2:15</span>
-          </div>
-        </div>
-
         <div class="card">
           <div class="card-icon-container">
             <i class="fas fa-moon card-icon-fa"></i>
@@ -209,62 +174,6 @@
             <span>12:20</span>
           </div>
         </div>
-
-        <div class="card">
-          <div class="card-icon-container">
-            <i class="fas fa-water card-icon-fa"></i>
-          </div>
-          <h3>Body Scan Meditation</h3>
-          <p>
-            A comprehensive guided meditation that helps you reconnect with your
-            body and release physical tension.
-          </p>
-          <iframe
-            width="100%"
-            height="215"
-            src="https://www.youtube.com/embed/QS2yDmWk0vs"
-            title="Body Scan"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-          <div class="session-controls">
-            <button class="play-button">
-              <i class="fas fa-play"></i>
-            </button>
-            <div class="progress-container">
-              <div class="progress-bar"></div>
-            </div>
-            <span>15:05</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-icon-container">
-            <i class="fas fa-cloud-sun card-icon-fa"></i>
-          </div>
-          <h3>Morning Mindfulness</h3>
-          <p>
-            Start your day with intention and presence using this morning
-            meditation practice for positive energy.
-          </p>
-          <iframe
-            width="100%"
-            height="215"
-            src="https://www.youtube.com/embed/ENYYb5mJAy0"
-            title="Morning Mindfulness"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-          <div class="session-controls">
-            <button class="play-button">
-              <i class="fas fa-play"></i>
-            </button>
-            <div class="progress-container">
-              <div class="progress-bar"></div>
-            </div>
-            <span>7:50</span>
-          </div>
-        </div>
       </div>
 
       <div class="timer-container">
@@ -336,5 +245,118 @@
         &copy; 2025 Psychological Support. All rights reserved.
       </div>
     </footer>
+
+    <script>
+      // Timer Functionality
+      const timerDisplay = document.querySelector(".timer-container .timer");
+      const startButton = document.querySelector(
+        ".timer-container .start-button"
+      );
+      const resetButton = document.querySelector(
+        ".timer-container .reset-button"
+      );
+
+      let timerInterval = null;
+      let totalSeconds = 10 * 60; // Default 10 minutes
+      let isRunning = false;
+
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes}:${
+          remainingSeconds < 10 ? "0" : ""
+        }${remainingSeconds}`;
+      }
+
+      function updateDisplay() {
+        timerDisplay.textContent = formatTime(totalSeconds);
+      }
+
+      function startTimer() {
+        if (isRunning) {
+          // Pause timer
+          clearInterval(timerInterval);
+          startButton.innerHTML = '<i class="fas fa-play"></i> Start';
+          isRunning = false;
+        } else {
+          // Start timer
+          if (totalSeconds <= 0) totalSeconds = 10 * 60; // Reset if starting from 0
+
+          isRunning = true;
+          startButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+          timerInterval = setInterval(() => {
+            if (totalSeconds > 0) {
+              totalSeconds--;
+              updateDisplay();
+            } else {
+              clearInterval(timerInterval);
+              startButton.innerHTML = '<i class="fas fa-play"></i> Start';
+              isRunning = false;
+              alert("Meditation session complete!"); // Optional: Add a notification
+            }
+          }, 1000);
+        }
+      }
+
+      function resetTimer() {
+        clearInterval(timerInterval);
+        totalSeconds = 10 * 60; // Reset to 10 minutes
+        updateDisplay();
+        startButton.innerHTML = '<i class="fas fa-play"></i> Start';
+        isRunning = false;
+      }
+
+      // Initial display
+      updateDisplay();
+
+      // Event Listeners
+      startButton.addEventListener("click", startTimer);
+      resetButton.addEventListener("click", resetTimer);
+
+      // --- Add other script logic if needed, e.g., for session notes ---
+      const saveNotesButton = document.querySelector(".save-notes");
+      const notesTextarea = document.querySelector(".notes-form textarea");
+
+      saveNotesButton.addEventListener("click", () => {
+        const notes = notesTextarea.value;
+        if (notes.trim()) {
+          // In a real app, you'd save this to localStorage or a server
+          console.log("Notes saved:", notes);
+          alert("Notes saved (check console for now).");
+          notesTextarea.value = ""; // Clear textarea after saving
+        } else {
+          alert("Please write some notes before saving.");
+        }
+      });
+
+      // --- Add category tab filtering logic if needed ---
+      // Example (basic filtering - needs refinement based on actual session data structure)
+      const categoryTabs = document.querySelectorAll(".category-tab");
+      const sessionCards = document.querySelectorAll(".card-grid .card"); // Assuming all cards are initially visible
+
+      categoryTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Remove active class from all tabs
+          categoryTabs.forEach((t) => t.classList.remove("active"));
+          // Add active class to clicked tab
+          tab.classList.add("active");
+
+          const category = tab.textContent.trim(); // Get category name from tab text
+
+          // Filter logic (needs actual data attributes on cards, e.g., data-category="Meditation")
+          console.log(`Filtering for category: ${category}`);
+          // Add logic here to show/hide sessionCards based on the selected category
+          // For now, just logging the action
+          if (category === "All Sessions") {
+            sessionCards.forEach((card) => (card.style.display = "block")); // Show all
+          } else {
+            // Example: Hide all, then show matching (requires data-category attributes)
+            // sessionCards.forEach(card => card.style.display = 'none');
+            // document.querySelectorAll(`.card[data-category="${category}"]`).forEach(card => card.style.display = 'block');
+            alert(`Filtering for "${category}" not fully implemented yet.`);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
